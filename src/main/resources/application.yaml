@@ -8,6 +8,26 @@ spring:
     driverClassName: org.h2.Driver
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
   h2:
     console:
       enabled: true
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: Ov23liILc9LeyNZy7qgb
+            client-secret: 16a5b15a694723f7e836b40dc8b5e2710620eb84
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: read:user, user:email
+            client-name: GitHub
+        provider:
+          github:
+            authorization-uri: https://github.com/login/oauth/authorize
+            token-uri: https://github.com/login/oauth/access_token
+            user-info-uri: https://api.github.com/user
+            user-name-attribute: login
+

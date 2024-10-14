@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class StudentController {
 
-
     @GetMapping
     public String getStudent() {
         return "jestem studentem";
