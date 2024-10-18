@@ -1,9 +1,11 @@
 package pl.akademiaspecjalistowit.podstawyspringsecurity;
 
+import javax.sql.DataSource;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import pl.akademiaspecjalistowit.podstawyspringsecurity.repository.BookRepository;
 
 @SpringBootApplication
@@ -19,6 +21,11 @@ public class PodstawySpringSecurityApplication {
             repo.save(new BookEntity("Nad Niemnem"));
             repo.save(new BookEntity("Poradnik operatora koparki"));
         };
+    }
+
+    @Bean
+    public JdbcUserDetailsManager jdbcUserDetailsManager(DataSource dataSource) {
+        return new JdbcUserDetailsManager(dataSource);
     }
 
 }
